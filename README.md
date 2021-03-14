@@ -1,4 +1,4 @@
-# JavaApiRest
+# API REST de Produtos
 Criando API REST CRUD de produtos com Java e Spring Boot
 
 Tecnologias usadas:
