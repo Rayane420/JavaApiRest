@@ -20,7 +20,7 @@ import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 
 @RestController //anotação do rest
-@RequestMapping(value = "/api") //criando URI padrão da aplicação
+@RequestMapping(value = "/api") //criando URL padrão da aplicação
 @Api(value="API REST Produtos")
 @CrossOrigin(origins="*") //liberando todos os dominios para acessar a API
 public class ProdutoResource {  //classe que vai receber as requisições http ------
@@ -30,14 +30,14 @@ public class ProdutoResource {  //classe que vai receber as requisições http -
 	ProdutoRepository produtoRepository;
 	
 	//Listando todos os produtos -------
-	@GetMapping("/produtos") //determinando que a URI vai ser /produtos
+	@GetMapping("/produtos") //mapeando a solicitação http
 	@ApiOperation(value="Retorna uma lista de produtos")
 	public List<Produto> listaProdutos(){
 		return produtoRepository.findAll();
 	}
 	
 	//Listando um produto -------
-	@GetMapping("/produto/{id}") //determinando que a URI vai ser /produto/ id do produto que eu vou listar
+	@GetMapping("/produto/{id}") //mapeando a solicitação http
 	//@PathVariable = define q o produto vai receber o id como parametro --------
 	@ApiOperation(value="Retorna um produto unico")
 	public Produto listaProdutoUnico(@PathVariable(value = "id")long id){ 
@@ -54,7 +54,7 @@ public class ProdutoResource {  //classe que vai receber as requisições http -
 	//Deletando produtos -------
 	@DeleteMapping("/produto")
 	@ApiOperation(value="Deleta um produto")
-	public void deletaProduto(@RequestBody Produto produto) {  //metodo do tipo void pois não vai retornar nada
+	public void deletaProduto(@RequestBody Produto produto) {  //metodo sem retorno
 		produtoRepository.delete(produto);
 	}
 	
